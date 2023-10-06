@@ -37,6 +37,7 @@ fun HomeScreen(navController: NavController,userViewModel: UserViewModel)
         }
         Button(onClick = {
             userViewModel.SignOut()
+            navController.navigate("signIn")
         }) {
             Text(text = "Sign out")
         }

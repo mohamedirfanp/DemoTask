@@ -45,13 +45,12 @@ class UserViewModel(private val userDao: UserDao, private val scope : CoroutineS
         scope.launch {
             try {
                 var response = userDao.getUserByEmailAndPassword(userData.userEmail, userData.userPassword)
+                println(response)
                 if(response.isEmpty())
                     isLogined = "Fail"
                 else
                 {
                     isLogined = "Success"
-                    ClearData()
-
                 }
 
             }
@@ -77,6 +76,7 @@ class UserViewModel(private val userDao: UserDao, private val scope : CoroutineS
     fun SignOut()
     {
         isLogined = "Not"
+        ClearData()
 
     }
 }

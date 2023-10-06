@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.demotask.statemanagement.UserViewModel
+import kotlinx.coroutines.awaitAll
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -62,10 +63,11 @@ fun SignIn(navController: NavController, userViewModel: UserViewModel)
         Spacer(modifier = Modifier.padding(10.dp))
         Button(onClick = {
             userViewModel.SignInUser()
-            if(userViewModel.isLogined === "Fail")
+            if(userViewModel.isLogined == "Fail")
                 isError = true
-            else if(userViewModel.isLogined === "Success")
+            else if(userViewModel.isLogined == "Success")
                 navController.navigate("home")
+
         }) {
             Text(text = "Sign In")
         }
